@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <h1><%= title %></h1>
+    <input id="text" type="text" name="some_name" value="text">
+    <button id="add" name="button">Submit</button>
+    <script>
+  $(document).ready(function() {
+
+    $('#add').click(function () {
+
+      var name =$('#text').val();
+        $.ajax({
+        type:"POST",
+        //cache:false,
+        url:"/handle",
+        data:{name: name},    // multiple data sent using ajax
+        success: function (result) {
+
+          alert(result);
+        }
+      });
+      return false;
+    });
+  });
+</script>
+
+  </body>
+</html>
